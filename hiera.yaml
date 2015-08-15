@@ -1,0 +1,21 @@
+---
+:backends:
+  - yaml
+:hierarchy:
+  - defaults
+  - "virtual/%{::virtual}"
+  - "clientcert/%{::clientcert}"
+  - "domain/%{::domain}"
+  - "environment/%{::environment}"
+  - "tier/%{::tier}"
+  - "role/%{::role}/%{::role_group}"
+  - "role/application/%{::application}"
+  - "role/%{::role}"
+  - global
+
+:yaml:
+# datadir is empty here, so hiera uses its defaults:
+# # - /etc/puppetlabs/code/hieradata on *nix
+# # - %CommonAppData%\PuppetLabs\code\hieradata on Windows
+# # When specifying a datadir, make sure the directory exists.
+  :datadir: /etc/puppetlabs/code/hieradata

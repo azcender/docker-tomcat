@@ -1,0 +1,8 @@
+[submodule "environment"]
+	path = environment
+	url = git@github.com:azcender/puppet-r10k-environment.git
+	branch = staging
+[submodule "hieradata"]
+	path = hieradata
+	url = git@github.com:azcender/puppet-r10k-hiera.git
+	branch = staging
