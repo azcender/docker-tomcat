@@ -1,2 +1,2 @@
-role=tomcat
+role=oracle_weblogic
 role_group=sample
