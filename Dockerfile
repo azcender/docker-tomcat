@@ -24,7 +24,7 @@ COPY environment/manifests/site.pp /tmp/
 
 RUN puppet apply site.pp
 
-#USER tomcat
+RUN rm -rf /etc/puppetlabs/code
 
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
 
