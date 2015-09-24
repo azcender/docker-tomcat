@@ -2,7 +2,3 @@
 	path = environment
 	url = https://github.com/azcender/puppet-r10k-environment.git
 	branch = production
-[submodule "hieradata"]
-	path = hieradata
-	url = https://github.com/azcender/puppet-r10k-hiera.git
-	branch = production
