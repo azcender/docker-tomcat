@@ -15,8 +15,7 @@ COPY tomcat.txt /etc/facter/facts.d/
 
 COPY hiera.yaml /etc/puppetlabs/code/
 
-COPY hieradata /etc/puppetlabs/code/hieradata
-COPY environment/modules /etc/puppetlabs/code/modules
+COPY environment /etc/puppetlabs/code/environments/production
 
 WORKDIR /tmp
 
