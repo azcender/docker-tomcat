@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM tomcat:latest
 
 MAINTAINER Bryan Belanger bbelanger@azcender.com
 
@@ -23,8 +23,8 @@ COPY environment/manifests/site.pp /tmp/
 
 RUN puppet apply site.pp
 
-RUN rm -rf /etc/puppetlabs/code
+# RUN rm -rf /etc/puppetlabs/code
 
-CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+# CMD ["/opt/tomcat/bin/catalina.sh", "run"]
 
-EXPOSE 8080
+# EXPOSE 8080

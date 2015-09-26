@@ -1,2 +1,1 @@
-role=tomcat
-role_group=sample
+role=docker_tomcat
