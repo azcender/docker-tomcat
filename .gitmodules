@@ -1,4 +1,0 @@
-[submodule "environment"]
-	path = environment
-	url = https://github.com/azcender/puppet-r10k-environment.git
-	branch = docker
