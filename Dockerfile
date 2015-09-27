@@ -2,10 +2,15 @@ FROM tomcat:latest
 
 MAINTAINER Bryan Belanger bbelanger@azcender.com
 
-RUN yum -y upgrade
-RUN yum -y localinstall http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm;
-RUN yum -y install puppet-agent
-RUN mkdir -p /etc/facter/facts.d/
+#RUN yum -y upgrade
+#RUN yum -y localinstall http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm;
+#RUN yum -y install puppet-agent
+#RUN mkdir -p /etc/facter/facts.d/
+
+RUN apt-get -y update; \
+    curl -O http://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb; \
+    dpkg -i puppetlabs-release-pc1-jessie.deb; \
+    apt-get -y install puppet
 
 WORKDIR /etc/puppetlabs/code
 
