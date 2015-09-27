@@ -12,21 +12,21 @@ RUN apt-get -y update; \
     dpkg -i puppetlabs-release-pc1-jessie.deb; \
     apt-get -y install puppet
 
-WORKDIR /etc/puppetlabs/code
+#WORKDIR /etc/puppetlabs/code
 
 ENV PATH /opt/puppetlabs/bin:$PATH
 
-COPY tomcat.txt /etc/facter/facts.d/
+#COPY tomcat.txt /etc/facter/facts.d/
 
-COPY hiera.yaml /etc/puppetlabs/code/
+#COPY hiera.yaml /etc/puppetlabs/code/
 
-COPY environment /etc/puppetlabs/code/environments/production
+#COPY environment /etc/puppetlabs/code/environments/production
 
-WORKDIR /tmp
+#WORKDIR /tmp
 
-COPY environment/manifests/site.pp /tmp/
+#COPY environment/manifests/site.pp /tmp/
 
-RUN puppet apply site.pp
+#RUN puppet apply site.pp
 
 # RUN rm -rf /etc/puppetlabs/code
 
