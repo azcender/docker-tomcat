@@ -20,7 +20,7 @@ RUN apt-get -y update \
   && mkdir -p /etc/puppetlabs/code/environments/production \
   && cp -R hieradata /etc/puppetlabs/code/environments/production/ \
   && librarian-puppet install --path /etc/puppet/modules \
-  && cp /etc/puppet/modules/profile/files/hiera.yaml /etc/hiera.yaml
+  && cp /etc/puppet/modules/profile/files/hiera.yaml /etc/puppet/hiera.yaml
 
 RUN puppet apply /tmp/puppet-r10k-environment/manifests/site.pp
 #  && apt-get -y purge puppet \
