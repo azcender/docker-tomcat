@@ -1,4 +1,4 @@
-FROM tomcat:latest
+FROM tomcat:7
 
 MAINTAINER Bryan Belanger bbelanger@azcender.com
 
