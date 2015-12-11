@@ -14,14 +14,14 @@ RUN apt-get -y update \
   && dpkg -i puppetlabs-release-pc1-jessie.deb \
   && apt-get -y update \
   && apt-get -y install puppet \
-  && gem install librarian-puppet --no-ri --no-rdoc \
-  && git clone https://bryanjbelanger-puppet:zGc9Zh5wUfvn@github.com/azcender/puppet-r10k-environment.git \
+  && gem install librarian-puppet --no-ri --no-rdoc
+
+RUN git clone https://bryanjbelanger-puppet:zGc9Zh5wUfvn@github.com/azcender/puppet-r10k-environment.git \
   && cd puppet-r10k-environment \
   && mkdir -p /etc/puppetlabs/code/environments/production \
   && cp -R hieradata /etc/puppetlabs/code/environments/production/ \
   && librarian-puppet install --path /etc/puppet/modules \
-  && cp /etc/puppet/modules/profile/files/hiera.yaml /etc/puppet/hiera.yaml
-
-RUN puppet apply /tmp/puppet-r10k-environment/manifests/site.pp
+  && cp /etc/puppet/modules/profile/files/hiera.yaml /etc/puppet/hiera.yaml \
+  && puppet apply /tmp/puppet-r10k-environment/manifests/site.pp
 #  && apt-get -y purge puppet \
 #  && apt-get -y autoremove
