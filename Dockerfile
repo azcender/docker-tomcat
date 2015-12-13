@@ -14,7 +14,7 @@ RUN apt-get -y update \
   && dpkg -i puppetlabs-release-pc1-jessie.deb \
   && apt-get -y update \
   && apt-get -y install puppet \
-  && gem install librarian-puppet --no-ri --no-rdoc
+  && gem install librarian-puppet --no-ri --no-rdoc \
   && git clone https://bryanjbelanger-puppet:zGc9Zh5wUfvn@github.com/azcender/puppet-r10k-environment.git \
   && cd puppet-r10k-environment \
   && mkdir -p /etc/puppetlabs/code/environments/production \
