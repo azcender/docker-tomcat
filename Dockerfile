@@ -21,6 +21,6 @@ RUN apt-get -y update \
   && cp -R hieradata /etc/puppetlabs/code/environments/production/ \
   && librarian-puppet install --path /etc/puppet/modules \
   && cp /etc/puppet/modules/profile/files/hiera.yaml /etc/puppet/hiera.yaml \
-  && puppet apply /tmp/puppet-r10k-environment/manifests/site.pp
+  && puppet apply /tmp/puppet-r10k-environment/manifests/site.pp \
   && apt-get -y purge puppet \
   && apt-get -y autoremove
