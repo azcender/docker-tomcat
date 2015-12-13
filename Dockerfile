@@ -23,4 +23,6 @@ RUN apt-get -y update \
   && cp /etc/puppet/modules/profile/files/hiera.yaml /etc/puppet/hiera.yaml \
   && puppet apply /tmp/puppet-r10k-environment/manifests/site.pp \
   && apt-get -y purge puppet \
-  && apt-get -y autoremove
+  && apt-get -y autoremove \
+  && rm -rf /etc/puppet \
+  && rm -rf /etc/puppetlabs
