@@ -19,6 +19,8 @@ RUN mkdir -p /etc/puppetlabs/code/environments/production
 RUN cp -R /tmp/control-repo/hieradata /etc/puppetlabs/code/environments/production/
 RUN puppet module install puppetlabs-tomcat -i /etc/puppet/modules
 RUN cp /tmp/control-repo/site/profile/files/hiera.yaml /etc/puppet/hiera.yaml
+RUN cp -R /tmp/control-repo/site/role /etc/puppet/modules/
+RUN cp -R /tmp/control-repo/site/profile /etc/puppet/modules/
 RUN puppet apply /tmp/control-repo/manifests/site.pp
 #RUN apt-get -y purge puppet
 #RUN apt-get -y autoremove
