@@ -15,9 +15,8 @@ RUN dpkg -i puppetlabs-release-pc1-jessie.deb
 RUN apt-get -y update
 RUN apt-get -y install puppet
 RUN git clone https://bryanjbelanger-puppet:zGc9Zh5wUfvn@github.com/autostructure/control-repo.git
-RUN cd control-repo
 RUN mkdir -p /etc/puppetlabs/code/environments/production
-RUN cp -R hieradata /etc/puppetlabs/code/environments/production/
+RUN cp -R /tmp/control-repo/hieradata /etc/puppetlabs/code/environments/production/
 RUN puppet module install puppetlabs-tomcat -i /etc/puppet/modules
 RUN cp /etc/puppet/modules/profile/files/hiera.yaml /etc/puppet/hiera.yaml
 RUN puppet apply /tmp/puppet-r10k-environment/manifests/site.pp
