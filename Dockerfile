@@ -18,7 +18,7 @@ RUN git clone https://bryanjbelanger-puppet:zGc9Zh5wUfvn@github.com/autostructur
 RUN mkdir -p /etc/puppetlabs/code/environments/production
 RUN cp -R /tmp/control-repo/hieradata /etc/puppetlabs/code/environments/production/
 RUN puppet module install puppetlabs-tomcat -i /etc/puppet/modules
-RUN cp /etc/puppet/modules/profile/files/hiera.yaml /etc/puppet/hiera.yaml
+RUN cp /tmp/control-repo/site/profile/files/hiera.yaml /etc/puppet/hiera.yaml
 RUN puppet apply /tmp/puppet-r10k-environment/manifests/site.pp
 RUN apt-get -y purge puppet
 RUN apt-get -y autoremove
