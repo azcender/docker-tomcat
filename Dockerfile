@@ -14,9 +14,8 @@ RUN wget https://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb
 RUN dpkg -i puppetlabs-release-pc1-jessie.deb
 RUN apt-get -y update
 RUN apt-get -y install puppet
-RUN gem install librarian-puppet --no-ri --no-rdoc
-RUN git clone https://bryanjbelanger-puppet:zGc9Zh5wUfvn@github.com/azcender/puppet-r10k-environment.git
-RUN cd puppet-r10k-environment
+RUN git clone https://bryanjbelanger-puppet:zGc9Zh5wUfvn@github.com/autostructure/control-repo.git
+RUN cd control-repo
 RUN mkdir -p /etc/puppetlabs/code/environments/production
 RUN cp -R hieradata /etc/puppetlabs/code/environments/production/
 RUN puppet module install puppetlabs-tomcat -i /etc/puppet/modules
