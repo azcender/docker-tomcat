@@ -10,11 +10,12 @@ WORKDIR /tmp
 
 RUN apt-get -y update
 RUN apt-get -y install git
-RUN wget https://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb
-RUN dpkg -i puppetlabs-release-pc1-jessie.deb
+#RUN wget https://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb
+#RUN dpkg -i puppetlabs-release-pc1-jessie.deb
 RUN apt-get -y update
-RUN apt-get -y install puppet
-RUN git clone https://bryanjbelanger-puppet:zGc9Zh5wUfvn@github.com/autostructure/control-repo.git
+RUN apt-get -y install ruby
+#RUN git clone https://bryanjbelanger-puppet:zGc9Zh5wUfvn@github.com/autostructure/control-repo.git
+RUN gem install puppet
 RUN mkdir -p /etc/puppetlabs/code/environments/production
 RUN cp -R /tmp/control-repo/hieradata /etc/puppetlabs/code/environments/production/
 RUN puppet module install puppetlabs-tomcat -i /etc/puppet/modules
