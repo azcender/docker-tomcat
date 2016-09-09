@@ -1,4 +1,4 @@
 virtual=docker
-role=docker_tomcat
+role=tomcat
 application=crais
-tier=qa
+tier=development
