@@ -1,32 +1,28 @@
-FROM tomcat:7
+FROM tomcat:alpine
 
 MAINTAINER Bryan Belanger bbelanger@azcender.com
 
-COPY tomcat.txt /etc/facter/facts.d/
+CENV PUPPET_VERSION="4.6.1" FACTER_VERSION="2.4.6"
 
-ENV PATH /opt/puppetlabs/bin:$PATH
+LABEL com.puppet.version=$PUPPET_VERSION com.puppet.git.repo="https://github.com/puppetlabs/dockerfiles" com.puppet.git.sha="d5e378b4ac1775b7a8125208a65e0e5ef2823411" com.puppet.buildtime="2016-08-24T08:00:12Z" com.puppet.dockerfile="/Dockerfile"
 
-WORKDIR /tmp
+RUN apk add --update \
+      ca-certificates \
+      pciutils \
+      ruby \
+      ruby-irb \
+      ruby-rdoc \
+      && \
+    echo http://dl-4.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories && \
+    apk add --update shadow && \
+    rm -rf /var/cache/apk/* && \
+    gem install puppet:"$PUPPET_VERSION" facter:"$FACTER_VERSION" && \
+    /usr/bin/puppet module install puppetlabs-apk
 
-RUN apt-get -y update
-RUN apt-get -y install git
-#RUN wget https://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb
-#RUN dpkg -i puppetlabs-release-pc1-jessie.deb
-RUN apt-get -y update
-RUN apt-get -y install ruby
-RUN apt-get -y install libaugeas-ruby
-RUN gem install puppet
-RUN mkdir -p /etc/puppetlabs/code/environments/production
-RUN git clone https://bryanjbelanger-puppet:zGc9Zh5wUfvn@github.com/autostructure/control-repo.git
-RUN mkdir -p /etc/puppetlabs/puppet
-RUN cp -R /tmp/control-repo/hieradata /etc/puppetlabs/code/environments/production/
-RUN puppet module install puppetlabs-tomcat
-RUN puppet module install autostructure-artifactory_utils
-RUN cp /tmp/control-repo/site/profile/files/hiera.yaml /etc/puppetlabs/puppet/hiera.yaml
-RUN cp -R /tmp/control-repo/site/role /etc/puppetlabs/code/environments/production/modules
-RUN cp -R /tmp/control-repo/site/profile /etc/puppetlabs/code/environments/production/modules
-RUN puppet apply /tmp/control-repo/manifests/site.pp
-#RUN apt-get -y purge puppet
-#RUN apt-get -y autoremove
-#RUN rm -rf /etc/puppet
-#RUN rm -rf /etc/puppetlabs
+# Workaround for https://tickets.puppetlabs.com/browse/FACT-1351
+RUN rm /usr/lib/ruby/gems/2.3.0/gems/facter-"$FACTER_VERSION"/lib/facter/blockdevices.rb
+
+#ENTRYPOINT ["/usr/bin/puppet"]
+#CMD ["agent", "--verbose", "--onetime", "--no-daemonize", "--summarize" ]
+
+#COPY Dockerfile /
