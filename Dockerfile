@@ -2,7 +2,7 @@ FROM tomcat:alpine
 
 MAINTAINER Bryan Belanger bbelanger@azcender.com
 
-CENV PUPPET_VERSION="4.6.1" FACTER_VERSION="2.4.6"
+ENV PUPPET_VERSION="4.6.1" FACTER_VERSION="2.4.6"
 
 LABEL com.puppet.version=$PUPPET_VERSION com.puppet.git.repo="https://github.com/puppetlabs/dockerfiles" com.puppet.git.sha="d5e378b4ac1775b7a8125208a65e0e5ef2823411" com.puppet.buildtime="2016-08-24T08:00:12Z" com.puppet.dockerfile="/Dockerfile"
 
